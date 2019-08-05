@@ -24,9 +24,9 @@ Can be used in combination with [flatten-anything 🏏](https://github.com/mesqu
 import nestify from 'nestify-anything'
 
 const target = {
-  name: 'Ho-oh',
-  types.fire: true,
-  types.flying: true
+  'name': 'Ho-oh',
+  'types.fire': true,
+  'types.flying': true
 }
 
 nestify(target)
