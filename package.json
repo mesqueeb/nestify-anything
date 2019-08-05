@@ -1,0 +1,38 @@
+{
+  "name": "nestify-anything",
+  "version": "0.0.0",
+  "description": "Recreates an object from any `nested.props`. A simple and small integration.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "test": "ava",
+    "rollup": "rollup -c build/rollup.js",
+    "build": "npm run rollup && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mesqueeb/nestify-anything.git"
+  },
+  "keywords": [
+    "nestify",
+    "nest-objects",
+    "nestify-objects",
+    "nested",
+    "paths",
+    "nest-paths"
+  ],
+  "author": "Luca Ban - Mesqueeb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mesqueeb/nestify-anything/issues"
+  },
+  "homepage": "https://github.com/mesqueeb/nestify-anything#readme",
+  "devDependencies": {
+    "ava": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.22.1",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "merge-anything": "^2.4.0"
+  }
+}
