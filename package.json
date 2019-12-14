@@ -1,9 +1,10 @@
 {
   "name": "nestify-anything",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Recreates an object from any `nested.props`. A simple and small integration.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "typings": "types/index.d.ts",
   "scripts": {
     "test": "ava",
     "rollup": "rollup -c build/rollup.js",
@@ -28,11 +29,11 @@
   },
   "homepage": "https://github.com/mesqueeb/nestify-anything#readme",
   "devDependencies": {
-    "ava": "^2.2.0",
+    "ava": "^2.4.0",
     "rollup-plugin-typescript2": "^0.22.1",
-    "typescript": "^3.5.3"
+    "typescript": "^3.7.3"
   },
   "dependencies": {
-    "merge-anything": "^2.4.0"
+    "merge-anything": "^2.4.4"
   }
 }
