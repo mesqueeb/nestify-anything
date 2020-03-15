@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prefer-const */
 import test from 'ava'
-import { createObjectFromPath, nestifyObject } from '../dist/index.cjs'
+import { createObjectFromPath, nestifyObject } from '../src/index'
 
 test('createObjectFromPath', t => {
   let payload, path, res

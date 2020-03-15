@@ -21,12 +21,12 @@ Can be used in combination with [flatten-anything 🏏](https://github.com/mesqu
 ## Usage
 
 ```js
-import nestify from 'nestify-anything'
+import { nestify } from 'nestify-anything'
 
 const target = {
   'name': 'Ho-oh',
   'types.fire': true,
-  'types.flying': true
+  'types.flying': true,
 }
 
 nestify(target)
