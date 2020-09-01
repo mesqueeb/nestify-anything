@@ -21,7 +21,7 @@ Can be used in combination with [flatten-anything 🏏](https://github.com/mesqu
 ## Usage
 
 ```js
-import { nestify } from 'nestify-anything'
+import { nestifyObject } from 'nestify-anything'
 
 const target = {
   'name': 'Ho-oh',
@@ -29,10 +29,10 @@ const target = {
   'types.flying': true,
 }
 
-nestify(target)
+nestifyObject(target)
 // returns {
 //   name: 'Ho-oh',
-//   types: {fire: true, flying: true}
+//   types: { fire: true, flying: true }
 // }
 ```
 
