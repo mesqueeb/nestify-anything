@@ -1,7 +1,7 @@
 {
   "name": "nestify-anything",
   "sideEffects": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Recreates an object from any `nested.props`. A simple and small integration.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -13,20 +13,20 @@
     "build": "rm -rf dist && rm -rf types && npm run lint && npm run test && npm run rollup"
   },
   "dependencies": {
-    "merge-anything": "^3.0.5"
+    "merge-anything": "^3.0.6"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.0.1",
-    "@typescript-eslint/parser": "^4.0.1",
-    "ava": "^3.12.1",
-    "eslint": "^7.8.1",
-    "eslint-config-prettier": "^6.11.0",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "ava": "^3.13.0",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-tree-shaking": "^1.8.0",
-    "rollup": "^2.26.9",
-    "rollup-plugin-typescript2": "^0.27.2",
+    "rollup": "^2.32.0",
+    "rollup-plugin-typescript2": "^0.28.0",
     "tsconfig-paths": "^3.9.0",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.3"
   },
   "keywords": [
     "nestify",
