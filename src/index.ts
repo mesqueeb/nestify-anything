@@ -5,8 +5,7 @@ import { merge } from 'merge-anything'
  *
  * @param {string} path a.path.like.this
  * @param {unknown} payload the value to attach to the nested prop
- * @returns {Record<string, unknown>} eg. {a: {path: {like: {this: 'payload'}}}}
- * @export
+ * @returns {Record<string, unknown>} eg. `{a: {path: {like: {this: 'payload'}}}}`
  */
 export function createObjectFromPath (path: string, payload: unknown): Record<string, unknown> {
   // edge cases
@@ -27,9 +26,12 @@ export function createObjectFromPath (path: string, payload: unknown): Record<st
 /**
  * Recreates an object from any `nested.props` in a passed target object.
  *
- * @param {Record<string, unknown>} payload object with flat prop paths - eg. {'size.h': 0, 'size.w': 0}
- * @returns {Record<string, unknown>} object with nested props - eg. {size: {h: 0, w: 0}}
- * @export
+ * @param {Record<string, unknown>} payload object with flat prop paths - eg. `{ 'size.h': 0, 'size.w': 0 }`
+ * @returns {Record<string, unknown>} object with nested props - eg. `{ size: { h: 0, w: 0 } }`
+ * @example
+ * const result = nestifyObject({ 'size.h': 0, 'size.w': 0 })
+ * // result is:
+ * { size: { h: 0, w: 0 } }
  */
 export function nestifyObject (payload: Record<string, unknown>): Record<string, unknown> {
   return Object.entries(payload).reduce((carry, [key, value]) => {
