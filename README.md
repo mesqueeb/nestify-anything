@@ -1,5 +1,8 @@
 # Nestify anything 🧅
 
+<a href="https://www.npmjs.com/package/nestify-anything"><img src="https://img.shields.io/npm/v/nestify-anything.svg" alt="Total Downloads"></a>
+<a href="https://www.npmjs.com/package/nestify-anything"><img src="https://img.shields.io/npm/dw/nestify-anything.svg" alt="Latest Stable Version"></a>
+
 ```
 npm i nestify-anything
 ```
