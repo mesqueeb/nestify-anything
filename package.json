@@ -1,7 +1,7 @@
 {
   "name": "nestify-anything",
   "sideEffects": false,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Recreates an object from any `nested.props`. A simple and small integration.",
   "module": "./dist/index.es.js",
   "main": "./dist/index.cjs",
