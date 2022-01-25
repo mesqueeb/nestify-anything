@@ -13,13 +13,17 @@ export function createObjectFromPath (path: string, payload: unknown): Record<st
   // start
   const newValue = payload
   // important to set the result here and not return the reduce directly!
-  const result = {}
-  path.match(/[^.]+/g).reduce((carry, _prop, index, array) => {
+  const result: Record<string, unknown> = {}
+  
+  const matches = path.match(/[^.]+/g) || []
+  
+  matches.reduce((carry, _prop, index, array) => {
     _prop = _prop.replace('_____dot_____', '.')
-    const container = index === array.length - 1 ? newValue : {}
+    const container: any = index === array.length - 1 ? newValue : {}
     carry[_prop] = container
     return container
   }, result)
+
   return result
 }
 

@@ -8,15 +8,15 @@ test('createObjectFromPath', () => {
   path = 'nest.once'
   payload = true
   res = createObjectFromPath(path, payload)
-  t.deepEqual(res, { nest: { once: true } })
+  expect(res).toEqual({ nest: { once: true } })
   path = 'a.path.like.this'
   res = createObjectFromPath(path, payload)
-  t.deepEqual(res, { a: { path: { like: { this: true } } } })
+  expect(res).toEqual({ a: { path: { like: { this: true } } } })
 })
 
 test('nestifyObject', () => {
   let payload, res
   payload = { 'size.h': 0, 'size.w': 0 }
   res = nestifyObject(payload)
-  t.deepEqual(res, { size: { h: 0, w: 0 } })
+  expect(res).toEqual({ size: { h: 0, w: 0 } })
 })
