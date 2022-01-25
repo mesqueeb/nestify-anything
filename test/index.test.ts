@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prefer-const */
-import test from 'ava'
+import { test, expect } from 'vitest'
 import { createObjectFromPath, nestifyObject } from '../src/index'
 
-test('createObjectFromPath', t => {
+test('createObjectFromPath', () => {
   let payload, path, res
   path = 'nest.once'
   payload = true
@@ -14,7 +14,7 @@ test('createObjectFromPath', t => {
   t.deepEqual(res, { a: { path: { like: { this: true } } } })
 })
 
-test('nestifyObject', t => {
+test('nestifyObject', () => {
   let payload, res
   payload = { 'size.h': 0, 'size.w': 0 }
   res = nestifyObject(payload)
