@@ -7,22 +7,24 @@ import { merge } from 'merge-anything'
  * @param {unknown} payload the value to attach to the nested prop
  * @returns {Record<string, unknown>} eg. `{a: {path: {like: {this: 'payload'}}}}`
  */
-export function createObjectFromPath (path: string, payload: unknown): Record<string, unknown> {
+export function createObjectFromPath(path: string, payload: unknown): Record<string, unknown> {
   // edge cases
   if (!path.includes('.')) return { [path]: payload }
   // start
   const newValue = payload
   // important to set the result here and not return the reduce directly!
   const result: Record<string, unknown> = {}
-  
-  const matches = path.match(/[^.]+/g) || []
-  
-  matches.reduce((carry, _prop, index, array) => {
-    _prop = _prop.replace('_____dot_____', '.')
-    const container: any = index === array.length - 1 ? newValue : {}
-    carry[_prop] = container
-    return container
-  }, result)
+
+  const matches = Array.from(path.matchAll(/[^.]+/g), ([x]) => x)
+  let point = result
+  let index = 0
+  for (const _prop of matches) {
+    const prop = _prop.replace(/_____dot_____/g, '.')
+    const isLast = index++ === matches.length - 1
+    const container: any = isLast ? newValue : {}
+    point[prop] = container
+    point = container
+  }
 
   return result
 }
@@ -37,7 +39,7 @@ export function createObjectFromPath (path: string, payload: unknown): Record<st
  * // result is:
  * { size: { h: 0, w: 0 } }
  */
-export function nestifyObject (payload: Record<string, unknown>): Record<string, unknown> {
+export function nestifyObject(payload: Record<string, unknown>): Record<string, unknown> {
   return Object.entries(payload).reduce((carry, [key, value]) => {
     const nestedObject = createObjectFromPath(key, value)
     return merge(carry, nestedObject)
