@@ -5,6 +5,7 @@
     "target": "es2019",
     "lib": ["esnext", "DOM"],
     "strict": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "isolatedModules": true,
     "esModuleInterop": true,
