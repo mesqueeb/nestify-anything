@@ -1,7 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var mergeAnything = require('merge-anything');
 
 /**
@@ -19,13 +17,16 @@ function createObjectFromPath(path, payload) {
     const newValue = payload;
     // important to set the result here and not return the reduce directly!
     const result = {};
-    const matches = path.match(/[^.]+/g) || [];
-    matches.reduce((carry, _prop, index, array) => {
-        _prop = _prop.replace('_____dot_____', '.');
-        const container = index === array.length - 1 ? newValue : {};
-        carry[_prop] = container;
-        return container;
-    }, result);
+    const matches = Array.from(path.matchAll(/[^.]+/g), ([x]) => x);
+    let point = result;
+    let index = 0;
+    for (const _prop of matches) {
+        const prop = _prop.replace(/_____dot_____/g, '.');
+        const isLast = index++ === matches.length - 1;
+        const container = isLast ? newValue : {};
+        point[prop] = container;
+        point = container;
+    }
     return result;
 }
 /**
