@@ -2,7 +2,7 @@
   "name": "nestify-anything",
   "sideEffects": false,
   "type": "module",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Recreates an object from any `nested.props`. A simple and small integration.",
   "module": "./dist/index.es.js",
   "main": "./dist/index.cjs",
