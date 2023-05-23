@@ -5,7 +5,7 @@
  * @param {unknown} payload the value to attach to the nested prop
  * @returns {Record<string, unknown>} eg. `{a: {path: {like: {this: 'payload'}}}}`
  */
-export declare function createObjectFromPath(path: string, payload: unknown): Record<string, unknown>;
+declare function createObjectFromPath(path: string, payload: unknown): Record<string, unknown>;
 /**
  * Recreates an object from any `nested.props` in a passed target object.
  *
@@ -16,4 +16,6 @@ export declare function createObjectFromPath(path: string, payload: unknown): Re
  * // result is:
  * { size: { h: 0, w: 0 } }
  */
-export declare function nestifyObject(payload: Record<string, unknown>): Record<string, unknown>;
+declare function nestifyObject(payload: Record<string, unknown>): Record<string, unknown>;
+
+export { createObjectFromPath, nestifyObject };
