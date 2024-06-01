@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prefer-const */
-import { test, expect } from 'vitest'
-import { createObjectFromPath, nestifyObject } from '../src/index'
+import { expect, test } from 'vitest'
+import { createObjectFromPath, nestifyObject } from '../src/index.js'
 
 test('createObjectFromPath', () => {
   let payload, path, res
