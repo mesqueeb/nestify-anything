@@ -1,6 +1,6 @@
 {
   "name": "nestify-anything",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Recreates an object from any `nested.props`. A simple and small integration.",
   "type": "module",
   "sideEffects": false,
