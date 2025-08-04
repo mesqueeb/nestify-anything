@@ -20,3 +20,44 @@ test('nestifyObject', () => {
   res = nestifyObject(payload)
   expect(res).toEqual({ size: { h: 0, w: 0 } })
 })
+
+test('createObjectFromPath ... not', () => {
+  let payload, path, res
+  path = 'nest\\.nonce'
+  payload = true
+  res = createObjectFromPath(path, payload)
+  expect(res).toEqual({ 'nest.nonce': true })
+  path = 'a\\.path\\.like\\.this'
+  res = createObjectFromPath(path, payload)
+  expect(res).toEqual({ 'a.path.like.this': true })
+})
+
+test('nestifyObject ... not', () => {
+  let payload, res
+  payload = { 'size\\.h': 0, 'size\\.w': 0 }
+  res = nestifyObject(payload)
+  expect(res).toEqual({ 'size.h': 0, 'size.w': 0 })
+})
+
+test('nestifyObject with mixed keys', () => {
+  let payload, res
+  payload = {
+    'user.name': 'John',
+    'user.age': 30,
+    'user\\.email': 'john@example.com',
+    'settings.theme': 'dark',
+    'settings\\.api.key': 'secret123',
+  }
+  res = nestifyObject(payload)
+  expect(res).toEqual({
+    'user': {
+      name: 'John',
+      age: 30,
+    },
+    'user.email': 'john@example.com',
+    'settings': {
+      theme: 'dark',
+    },
+    'settings.api.key': 'secret123',
+  })
+})

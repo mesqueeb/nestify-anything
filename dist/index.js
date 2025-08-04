@@ -1,15 +1,21 @@
 import { merge } from 'merge-anything';
 /**
- * creates an object from a path
+ * Creates an object from a path
  *
- * @param path a.path.like.this
- * @param payload the value to attach to the nested prop
- * @returns eg. `{a: {path: {like: {this: 'payload'}}}}`
+ * @param path A.path.like.this
+ * @param payload The value to attach to the nested prop
+ * @returns Eg. `{a: {path: {like: {this: 'payload'}}}}`
  */
 export function createObjectFromPath(path, payload) {
     // edge cases
     if (!path.includes('.'))
         return { [path]: payload };
+    // Check if the path contains escaped dots - if so, treat as flat object
+    if (path.includes('\\.')) {
+        // Replace escaped dots with actual dots for the key name
+        const key = path.replace(/\\./g, '.');
+        return { [key]: payload };
+    }
     // start
     const newValue = payload;
     // important to set the result here and not return the reduce directly!
@@ -29,12 +35,13 @@ export function createObjectFromPath(path, payload) {
 /**
  * Recreates an object from any `nested.props` in a passed target object.
  *
- * @param payload object with flat prop paths - eg. `{ 'size.h': 0, 'size.w': 0 }`
- * @returns object with nested props - eg. `{ size: { h: 0, w: 0 } }`
  * @example
- * const result = nestifyObject({ 'size.h': 0, 'size.w': 0 })
- * // result is:
- * { size: { h: 0, w: 0 } }
+ *   const result = nestifyObject({ 'size.h': 0, 'size.w': 0 })
+ *   // result is:
+ *   { size: { h: 0, w: 0 } }
+ *
+ * @param payload Object with flat prop paths - eg. `{ 'size.h': 0, 'size.w': 0 }`
+ * @returns Object with nested props - eg. `{ size: { h: 0, w: 0 } }`
  */
 export function nestifyObject(payload) {
     return Object.entries(payload).reduce((carry, [key, value]) => {
