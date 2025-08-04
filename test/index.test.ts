@@ -46,7 +46,7 @@ test('nestifyObject with mixed keys', () => {
     'user.age': 30,
     'user\\.email': 'john@example.com',
     'settings.theme': 'dark',
-    'settings\\.api.key': 'secret123',
+    'settings\\.api\\.key': 'secret123',
   }
   res = nestifyObject(payload)
   expect(res).toEqual({
@@ -60,4 +60,19 @@ test('nestifyObject with mixed keys', () => {
     },
     'settings.api.key': 'secret123',
   })
+})
+
+test('createObjectFromPath with mixed escaped and non-escaped dots', () => {
+  let payload, path, res
+  path = 'nested.some\\.dotted\\.key.deep'
+  payload = true
+  res = createObjectFromPath(path, payload)
+  expect(res).toEqual({ nested: { 'some.dotted.key': { deep: true } } })
+})
+
+test('nestifyObject with mixed escaped and non-escaped dots', () => {
+  let payload, res
+  payload = { 'nested.some\\.dotted\\.key.deep': true }
+  res = nestifyObject(payload)
+  expect(res).toEqual({ nested: { 'some.dotted.key': { deep: true } } })
 })
