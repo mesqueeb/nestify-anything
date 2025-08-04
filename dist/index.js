@@ -10,17 +10,13 @@ export function createObjectFromPath(path, payload) {
     // edge cases
     if (!path.includes('.'))
         return { [path]: payload };
-    // Check if the path contains escaped dots - if so, treat as flat object
-    if (path.includes('\\.')) {
-        // Replace escaped dots with actual dots for the key name
-        const key = path.replace(/\\./g, '.');
-        return { [key]: payload };
-    }
+    // Replace escaped dots with placeholder
+    const processedPath = path.replace(/\\./g, '_____dot_____');
     // start
     const newValue = payload;
     // important to set the result here and not return the reduce directly!
     const result = {};
-    const matches = Array.from(path.matchAll(/[^.]+/g), ([x]) => x);
+    const matches = Array.from(processedPath.matchAll(/[^.]+/g), ([x]) => x);
     let point = result;
     let index = 0;
     for (const _prop of matches) {
