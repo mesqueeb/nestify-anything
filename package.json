@@ -14,7 +14,7 @@
     "test": "vitest run",
     "lint": "tsc --noEmit && eslint ./src",
     "build": "del-cli dist && tsc",
-    "release": "npm run lint && npm run build && np"
+    "release": "pnpm run lint && pnpm run build && np"
   },
   "dependencies": {
     "merge-anything": "^6.0.6"
@@ -22,9 +22,9 @@
   "devDependencies": {
     "@cycraft/eslint": "^0.4.4",
     "@cycraft/tsconfig": "^0.1.2",
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "np": "^12.1.1",
-    "vitest": "^3.2.4"
+    "vitest": "^5.0.1"
   },
   "files": [
     "dist"
@@ -45,5 +45,6 @@
     "url": "https://github.com/mesqueeb/nestify-anything.git"
   },
   "homepage": "https://github.com/mesqueeb/nestify-anything#readme",
-  "bugs": "https://github.com/mesqueeb/nestify-anything/issues"
+  "bugs": "https://github.com/mesqueeb/nestify-anything/issues",
+  "packageManager": "pnpm@11.27.0"
 }
